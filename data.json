@@ -1,11 +1,6 @@
 {
   "players": [
     {
-      "id": 1,
-      "name": "Jose Rivera",
-      "venue": "Tasca - Restaurant Billares Wilmaryck"
-    },
-    {
       "id": 2,
       "name": "Artury Barajas",
       "venue": "Tasca - Restaurant Billares Wilmaryck"
@@ -102,5 +97,5 @@
     }
   ],
   "matches": [],
-  "upcoming": [ ]
+  "upcoming": []
 }
