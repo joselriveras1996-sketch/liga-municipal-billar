@@ -59,6 +59,11 @@
       "id": 12,
       "name": "Jimmy Medina",
       "venue": "Tasca - Restaurant Billares Wilmaryck"
+    },
+    {
+      "id": 13,
+      "name": "Rodolfo Ibarra",
+      "venue": "Billares Ibarra"
     }
   ],
   "matches": [],
