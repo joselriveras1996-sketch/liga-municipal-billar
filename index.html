@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Municipal de Billar 3 Bandas - Junín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-billar-dark { background-color: #022c22; }
+        .bg-billar-card { background-color: #064e3b; }
+        .border-billar-gold { border-color: #f59e0b; }
+        .text-billar-gold { color: #f59e0b; }
+        input[type="datetime-local"], input[type="date"] {
+            color-scheme: dark;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+
+    <!-- ENCABEZADO -->
+    <header class="bg-billar-dark border-b border-billar-gold/30 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-emerald-900 border-2 border-amber-500 flex items-center justify-center text-amber-400 font-bold text-xl shadow-inner overflow-hidden">
+                    <span class="text-sm">3B</span>
+                </div>
+                <div>
+                    <h1 class="text-lg md:text-xl font-black tracking-wide text-white">LIGA MUNICIPAL DE BILLAR 3 BANDAS</h1>
+                    <p class="text-xs text-amber-400 font-semibold tracking-wider uppercase">Municipio Junín — Rubio, Táchira (2026)</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-2 flex-wrap">
+                <button onclick="switchTab('standings')" id="btn-standings" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow">
+                    <i class="fa-solid fa-trophy mr-1"></i> Posiciones
+                </button>
+                <button onclick="switchTab('calendar')" id="btn-calendar" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition">
+                    <i class="fa-solid fa-calendar-days mr-1"></i> Próximos
+                </button>
+                <button onclick="switchTab('playoffs')" id="btn-playoffs" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition">
+                    <i class="fa-solid fa-sitemap mr-1"></i> Fase Final
+                </button>
+                <button onclick="switchTab('matches')" id="btn-matches" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition">
+                    <i class="fa-solid fa-list-check mr-1"></i> Historial
+                </button>
+                <button onclick="checkAdminAccess()" id="btn-admin" class="px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700">
+                    <i class="fa-solid fa-lock mr-1"></i> Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+
+        <!-- VISTA DE POSICIONES -->
+        <div id="tab-standings" class="space-y-6">
+            <div class="bg-billar-dark border border-billar-gold/20 rounded-xl p-4 md:p-6 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl md:text-2xl font-black text-white flex items-center gap-2">
+                            <i class="fa-solid fa-medal text-amber-400"></i> Tabla General de Posiciones (20 Jugadores)
+                        </h2>
+                        <p class="text-xs text-slate-400">Top 8 clasifican a Cuartos de Final tras 19 jornadas.</p>
+                    </div>
+                    <div class="w-full md:w-auto">
+                        <input type="text" id="searchPlayer" onkeyup="renderTable()" placeholder="Buscar jugador o sede..." class="w-full md:w-64 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse" id="standingsTable">
+                        <thead>
+                            <tr class="bg-slate-900/80 text-amber-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                                <th class="p-3 text-center">#</th>
+                                <th class="p-3">Jugador</th>
+                                <th class="p-3">Sede</th>
+                                <th class="p-3 text-center">JJ</th>
+                                <th class="p-3 text-center">JG</th>
+                                <th class="p-3 text-center">JP</th>
+                                <th class="p-3 text-center">CAR</th>
+                                <th class="p-3 text-center">ENT</th>
+                                <th class="p-3 text-center">PROM</th>
+                                <th class="p-3 text-center">SM</th>
+                                <th class="p-3 text-center font-black text-amber-300">PTS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standingsBody" class="divide-y divide-slate-800 text-sm">
+                            <!-- Inyectado por JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA DE FASE FINAL (LLAVES) -->
+        <div id="tab-playoffs" class="space-y-6 hidden">
+            <div class="bg-billar-dark border border-billar-gold/20 rounded-xl p-4 md:p-6 shadow-xl">
+                <h2 class="text-xl font-black text-amber-400 mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-trophy"></i> Fase Final: Cuartos, Semifinal y Gran Final
+                </h2>
+                <p class="text-xs text-slate-300 mb-6">Cruces automáticos basados en la posición final de la fase regular (Top 8).</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="playoffsContainer">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA DE PARTIDOS PRÓXIMOS (CALENDARIO POR JORNADAS) -->
+        <div id="tab-calendar" class="space-y-6 hidden">
+            <div class="bg-billar-dark border border-billar-gold/20 rounded-xl p-4 md:p-6 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-black text-white flex items-center gap-2">
+                            <i class="fa-regular fa-calendar-check text-amber-400"></i> Calendario Oficial de Encuentros
+                        </h2>
+                        <p class="text-xs text-slate-400">19 Jornadas de competencia — 4 mesas simultáneas desde las 2:00 PM con intervalos de 1 hora.</p>
+                    </div>
+                    <div>
+                        <select id="filterRound" onchange="renderUpcoming()" class="bg-slate-900 border border-slate-700 text-amber-400 font-bold px-3 py-2 rounded-lg text-sm">
+                            <option value="ALL">Ver todas las jornadas</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="calendarList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA DE HISTORIAL DE PARTIDOS -->
+        <div id="tab-matches" class="space-y-6 hidden">
+            <div class="bg-billar-dark border border-billar-gold/20 rounded-xl p-4 md:p-6 shadow-xl">
+                <h2 class="text-xl font-black text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-days text-amber-400"></i> Historial de Partidos Registrados
+                </h2>
+                <div id="matchesList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA DE ADMINISTRACIÓN -->
+        <div id="tab-admin" class="space-y-6 hidden">
+            <div class="bg-billar-dark border border-amber-500/30 rounded-xl p-4 md:p-6 shadow-xl">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                    <div>
+                        <h2 class="text-xl font-black text-amber-400"><i class="fa-solid fa-screwdriver-wrench mr-2"></i> Panel de Administración</h2>
+                        <p class="text-xs text-slate-400">Generador de fixture, gestión de jugadores y registro de resultados.</p>
+                    </div>
+                    <button onclick="logoutAdmin()" class="bg-red-600/80 hover:bg-red-600 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i> Cerrar Sesión Admin
+                    </button>
+                </div>
+
+                <!-- CONFIGURACIÓN DE GITHUB TOKEN -->
+                <div class="bg-slate-900/90 p-4 rounded-xl border border-amber-500/40 mb-6">
+                    <h3 class="font-bold text-amber-400 mb-2 text-sm"><i class="fa-solid fa-cloud-arrow-up mr-1"></i> Sincronización Global (GitHub)</h3>
+                    <div class="flex gap-2">
+                        <input type="password" id="ghTokenInput" placeholder="Pega tu token de GitHub aquí (ghp_...)" class="flex-grow bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-xs text-white">
+                        <button onclick="saveToken()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-1.5 rounded text-xs transition">Guardar Token</button>
+                    </div>
+                </div>
+
+                <!-- GENERADOR AUTOMÁTICO DE FIXTURE -->
+                <div class="bg-slate-900/80 p-5 rounded-xl border border-amber-500/50 mb-8">
+                    <h3 class="font-bold text-amber-400 mb-2 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generador Automático de Torneo (19 Jornadas / 4 Mesas)
+                    </h3>
+                    <p class="text-xs text-slate-300 mb-4">
+                        Genera automáticamente los 190 partidos de solo ida distribuyendo 4 mesas a partir de las 2:00 PM con turnos de 1 hora.
+                    </p>
+                    <div class="flex flex-col md:flex-row items-end gap-3">
+                        <div class="w-full md:w-1/2">
+                            <label class="block text-xs text-slate-400 mb-1">Fecha de inicio (Primer Viernes del Torneo):</label>
+                            <input type="date" id="tournamentStartDate" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-xs text-white">
+                        </div>
+                        <button onclick="generateAutomaticSchedule()" class="w-full md:w-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2 px-4 rounded text-xs tracking-wider uppercase transition shadow">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Generar Calendario Completo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- FORMULARIO NUEVO JUGADOR -->
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                        <h3 class="font-bold text-white mb-3 text-sm flex items-center gap-2"><i class="fa-solid fa-user-plus text-amber-400"></i> Registrar Nuevo Jugador</h3>
+                        <form id="addPlayerForm" onsubmit="handlePlayerSubmit(event)" class="space-y-3">
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Nombre Completo</label>
+                                <input type="text" id="newPlayerName" required class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-slate-400 mb-1">Sede Base / Establecimiento</label>
+                                <select id="newPlayerVenue" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:border-amber-500">
+                                    <option value="Tasca - Restaurant Billares Wilmaryck">Tasca - Restaurant Billares Wilmaryck</option>
+                                    <option value="Billares Ibarra">Billares Ibarra</option>
+                                    <option value="Independiente">Independiente / Otro</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2 rounded text-sm transition">Guardar Jugador</button>
+                        </form>
+                    </div>
+
+                    <!-- FORMULARIO REGISTRAR PARTIDO JUGADO -->
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                        <h3 class="font-bold text-white mb-3 text-sm flex items-center gap-2"><i class="fa-solid fa-file-pen text-amber-400"></i> Registrar Resultado Oficial</h3>
+                        <form id="addMatchForm" onsubmit="handleMatchSubmit(event)" class="space-y-3">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Jugador 1</label>
+                                    <select id="matchP1" required class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white player-select"></select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Carambolas J1</label>
+                                    <input type="number" id="matchCar1" min="0" required class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Jugador 2</label>
+                                    <select id="matchP2" required class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white player-select"></select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Carambolas J2</label>
+                                    <input type="number" id="matchCar2" min="0" required class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Entradas Totales</label>
+                                    <input type="number" id="matchInnings" min="1" required class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-slate-400 mb-1">Serie Mayor</label>
+                                    <input type="number" id="matchHighSeries" min="0" value="0" class="w-full bg-slate-950 border border-slate-700 rounded px-2 py-2 text-xs text-white">
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded text-sm transition">Registrar Partido</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- LISTA DE JUGADORES REGISTRADOS -->
+                <div class="mt-6 border-t border-slate-800 pt-6">
+                    <h3 class="font-bold text-white mb-3 text-sm">Jugadores Registrados en la Liga</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm" id="adminPlayersTable">
+                            <thead>
+                                <tr class="bg-slate-900 text-slate-400 text-xs border-b border-slate-800">
+                                    <th class="p-2.5">ID</th>
+                                    <th class="p-2.5">Nombre</th>
+                                    <th class="p-2.5">Sede Base</th>
+                                    <th class="p-2.5 text-right">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminPlayersBody" class="divide-y divide-slate-800">
+                                <!-- Inyectado por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-billar-dark border-t border-slate-800 mt-auto py-4 text-center text-xs text-slate-400">
+        <p>Liga Municipal de Billar 3 Bandas de Junín — Rubio, Táchira (2026)</p>
+    </footer>
+
+    <!-- LOGICA JS -->
+    <script>
+        let adminPassword = 'admin123';
+        let isAdminLoggedIn = false;
+
+        const GH_USER = 'joselriveras1996-sketch';
+        const GH_REPO = 'liga-municipal-billar';
+        const GH_DATA_FILE = 'data.json';
+
+        let players = [];
+        let matches = [];
+        let upcomingMatches = [];
+
+        const venuesList = [
+            "Tasca - Restaurant Billares Wilmaryck",
+            "Billares Ibarra"
+        ];
+
+        async function loadInitialData() {
+            try {
+                let res = await fetch(`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/${GH_DATA_FILE}?t=` + Date.now());
+                if(res.ok) {
+                    let data = await res.json();
+                    players = data.players || [];
+                    matches = data.matches || [];
+                    upcomingMatches = data.upcoming || [];
+                }
+            } catch(e) {
+                console.error("Error cargando datos:", e);
+            }
+            renderTable();
+        }
+
+        function saveToken() {
+            let token = document.getElementById('ghTokenInput').value.trim();
+            if(!token) return alert("Ingresa un token válido.");
+            localStorage.setItem('lb_ghtoken', token);
+            alert("¡Token guardado correctamente!");
+        }
+
+        async function syncToGitHub() {
+            let token = localStorage.getItem('lb_ghtoken');
+            if (!token) {
+                alert("Sin token guardado. Guarda tu token en el Panel Admin para actualizar en la nube.");
+                return;
+            }
+
+            let payloadData = {
+                players: players,
+                matches: matches,
+                upcoming: upcomingMatches
+            };
+
+            try {
+                let getRes = await fetch(`https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_DATA_FILE}`, {
+                    headers: { 
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (!getRes.ok) return alert("Error conectando a GitHub. Verifica que data.json exista.");
+
+                let getData = await getRes.json();
+                let sha = getData.sha;
+
+                let jsonStr = JSON.stringify(payloadData, null, 2);
+                let base64Content = btoa(unescape(encodeURIComponent(jsonStr)));
+
+                let putRes = await fetch(`https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_DATA_FILE}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify({
+                        message: "Actualización de datos Liga Billar",
+                        content: base64Content,
+                        sha: sha
+                    })
+                });
+
+                if (putRes.ok) {
+                    alert("¡Sincronizado con éxito en la nube!");
+                } else {
+                    let errData = await putRes.json();
+                    alert("Error al actualizar GitHub: " + errData.message);
+                }
+            } catch (err) {
+                console.error("Error en sincronización:", err);
+                alert("Error de red al sincronizar.");
+            }
+        }
+
+        function saveData() {
+            syncToGitHub();
+        }
+
+        function generateAutomaticSchedule() {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            if (players.length < 2) {
+                return alert("Necesitas registrar al menos 2 jugadores para generar el calendario.");
+            }
+
+            let startDateInput = document.getElementById('tournamentStartDate').value;
+            if(!startDateInput) {
+                return alert("Por favor selecciona la fecha de inicio del primer viernes.");
+            }
+
+            if (!confirm(`Se van a generar las jornadas automáticamente para los ${players.length} jugadores registrados. ¿Deseas continuar?`)) {
+                return;
+            }
+
+            let pool = [...players];
+            if (pool.length % 2 !== 0) {
+                pool.push({ id: null, name: "BYE" });
+            }
+
+            let numPlayers = pool.length;
+            let roundsCount = numPlayers - 1;
+            let matchesPerRound = numPlayers / 2;
+            let generatedUpcoming = [];
+
+            let currentDate = new Date(startDateInput + "T00:00:00");
+
+            for (let round = 0; round < roundsCount; round++) {
+                let roundNum = round + 1;
+                let roundDate = new Date(currentDate);
+                let weekIndex = Math.floor(round / 3);
+                let dayInWeek = round % 3;
+
+                roundDate.setDate(roundDate.getDate() + (weekIndex * 7) + (dayInWeek === 2 ? 1 : 0));
+                let dateStr = roundDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' });
+
+                let roundVenue = venuesList[Math.floor(Math.random() * venuesList.length)];
+
+                let matchInRoundCount = 0;
+                for (let i = 0; i < matchesPerRound; i++) {
+                    let p1 = pool[i];
+                    let p2 = pool[numPlayers - 1 - i];
+
+                    if (p1.id !== null && p2.id !== null) {
+                        let hourOffset = Math.floor(matchInRoundCount / 4);
+                        let tableNum = (matchInRoundCount % 4) + 1;
+                        let timeHour = 2 + hourOffset;
+                        let datetimeFormatted = `${dateStr} — ${timeHour}:00 PM (Mesa ${tableNum})`;
+
+                        generatedUpcoming.push({
+                            id: Date.now() + Math.random(),
+                            round: roundNum,
+                            p1Id: p1.id,
+                            p2Id: p2.id,
+                            datetime: datetimeFormatted,
+                            venue: roundVenue,
+                            table: tableNum
+                        });
+                        matchInRoundCount++;
+                    }
+                }
+                pool.splice(1, 0, pool.pop());
+            }
+
+            upcomingMatches = generatedUpcoming;
+            saveData();
+            alert(`¡Se generaron con éxito ${upcomingMatches.length} partidos ordenados por turnos a partir de las 2:00 PM!`);
+            renderUpcoming();
+        }
+
+        function switchTab(tab) {
+            document.getElementById('tab-standings').classList.add('hidden');
+            document.getElementById('tab-calendar').classList.add('hidden');
+            document.getElementById('tab-playoffs').classList.add('hidden');
+            document.getElementById('tab-matches').classList.add('hidden');
+            document.getElementById('tab-admin').classList.add('hidden');
+
+            document.getElementById('btn-standings').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition";
+            document.getElementById('btn-calendar').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition";
+            document.getElementById('btn-playoffs').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition";
+            document.getElementById('btn-matches').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-emerald-800 text-white hover:bg-emerald-700 transition";
+            document.getElementById('btn-admin').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition border border-slate-700";
+
+            if(tab === 'standings') {
+                document.getElementById('tab-standings').classList.remove('hidden');
+                document.getElementById('btn-standings').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow";
+                renderTable();
+            } else if(tab === 'calendar') {
+                document.getElementById('tab-calendar').classList.remove('hidden');
+                document.getElementById('btn-calendar').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow";
+                renderUpcoming();
+            } else if(tab === 'playoffs') {
+                document.getElementById('tab-playoffs').classList.remove('hidden');
+                document.getElementById('btn-playoffs').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow";
+                renderPlayoffs();
+            } else if(tab === 'matches') {
+                document.getElementById('tab-matches').classList.remove('hidden');
+                document.getElementById('btn-matches').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow";
+                renderMatches();
+            } else if(tab === 'admin') {
+                document.getElementById('tab-admin').classList.remove('hidden');
+                document.getElementById('btn-admin').className = "px-3 py-1.5 text-xs md:text-sm font-bold rounded-lg bg-amber-500 text-slate-950 transition shadow";
+                renderAdminPlayers();
+                updatePlayerSelects();
+                let tokenStored = localStorage.getItem('lb_ghtoken');
+                if(tokenStored) document.getElementById('ghTokenInput').value = tokenStored;
+            }
+        }
+
+        function checkAdminAccess() {
+            if (isAdminLoggedIn) {
+                switchTab('admin');
+                return;
+            }
+            let pass = prompt("Ingrese la contraseña de administrador:");
+            if (pass === adminPassword) {
+                isAdminLoggedIn = true;
+                switchTab('admin');
+            } else if (pass !== null) {
+                alert("Contraseña incorrecta.");
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            switchTab('standings');
+            alert("Sesión de administrador cerrada.");
+        }
+
+        function getSortedStandings() {
+            const stats = {};
+            players.forEach(p => {
+                stats[p.id] = { id: p.id, name: p.name, venue: p.venue, pj: 0, pg: 0, pp: 0, car: 0, ent: 0, sm: 0, pts: 0 };
+            });
+
+            matches.forEach(m => {
+                if (stats[m.p1Id] && stats[m.p2Id]) {
+                    stats[m.p1Id].pj += 1;
+                    stats[m.p2Id].pj += 1;
+                    stats[m.p1Id].car += m.car1;
+                    stats[m.p2Id].car += m.car2;
+                    stats[m.p1Id].ent += m.ent;
+                    stats[m.p2Id].ent += m.ent;
+
+                    if (m.car1 > m.car2) {
+                        stats[m.p1Id].pg += 1;
+                        stats[m.p1Id].pts += 2;
+                        stats[m.p2Id].pp += 1;
+                    } else if (m.car2 > m.car1) {
+                        stats[m.p2Id].pg += 1;
+                        stats[m.p2Id].pts += 2;
+                        stats[m.p1Id].pp += 1;
+                    } else {
+                        stats[m.p1Id].pts += 1;
+                        stats[m.p2Id].pts += 1;
+                    }
+
+                    if (m.sm1 && m.sm1 > stats[m.p1Id].sm) stats[m.p1Id].sm = m.sm1;
+                    if (m.sm2 && m.sm2 > stats[m.p2Id].sm) stats[m.p2Id].sm = m.sm2;
+                }
+            });
+
+            let arr = Object.values(stats);
+            arr.sort((a, b) => {
+                if (b.pts !== a.pts) return b.pts - a.pts;
+                let promA = a.ent > 0 ? (a.car / a.ent) : 0;
+                let promB = b.ent > 0 ? (b.car / b.ent) : 0;
+                if (promB !== promA) return promB - promA;
+                return b.car - a.car;
+            });
+            return arr;
+        }
+
+        function renderTable() {
+            const searchInput = document.getElementById('searchPlayer');
+            const search = searchInput ? searchInput.value.toLowerCase() : '';
+            let arr = getSortedStandings().filter(p => p.name.toLowerCase().includes(search) || p.venue.toLowerCase().includes(search));
+
+            let tbody = document.getElementById('standingsBody');
+            if(tbody) {
+                tbody.innerHTML = '';
+                if (arr.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="11" class="p-4 text-center text-slate-500">No hay jugadores registrados.</td></tr>`;
+                    return;
+                }
+
+                arr.forEach((p, idx) => {
+                    let prom = p.ent > 0 ? (p.car / p.ent).toFixed(3) : "0.000";
+                    let isTop8 = idx < 8;
+                    let rowClass = isTop8 ? "bg-amber-500/10 text-amber-300 font-semibold" : "hover:bg-slate-900/40 text-slate-300";
+                    tbody.innerHTML += `
+                        <tr class="${rowClass} border-b border-slate-800/60">
+                            <td class="p-3 text-center font-bold">${idx + 1} ${isTop8 ? '<i class="fa-solid fa-check text-xs text-emerald-400 ml-1"></i>' : ''}</td>
+                            <td class="p-3 font-bold text-white">${p.name}</td>
+                            <td class="p-3 text-xs text-slate-400">${p.venue}</td>
+                            <td class="p-3 text-center">${p.pj}</td>
+                            <td class="p-3 text-center text-emerald-400">${p.pg}</td>
+                            <td class="p-3 text-center text-red-400">${p.pp}</td>
+                            <td class="p-3 text-center">${p.car}</td>
+                            <td class="p-3 text-center">${p.ent}</td>
+                            <td class="p-3 text-center text-amber-400 font-mono">${prom}</td>
+                            <td class="p-3 text-center">${p.sm}</td>
+                            <td class="p-3 text-center font-black text-amber-300 text-base">${p.pts}</td>
+                        </tr>
+                    `;
+                });
+            }
+        }
+
+        function renderPlayoffs() {
+            let standings = getSortedStandings();
+            let container = document.getElementById('playoffsContainer');
+            if(!container) return;
+
+            let top8 = standings.slice(0, 8);
+            if(top8.length < 8) {
+                container.innerHTML = `<p class="text-slate-400 text-sm col-span-3 text-center py-6">Se requieren al menos 8 jugadores en la tabla para armar las llaves finales.</p>`;
+                return;
+            }
+
+            container.innerHTML = `
+                <!-- CUARTOS DE FINAL -->
+                <div class="bg-slate-900 border border-amber-500/30 rounded-xl p-4 shadow space-y-3">
+                    <h3 class="font-bold text-amber-400 border-b border-slate-800 pb-2 text-sm flex justify-between items-center">
+                        <span><i class="fa-solid fa-people-group mr-1"></i> Cuartos de Final</span>
+                        <span class="text-xs text-slate-400">4 Llaves</span>
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between"><span class="text-white font-bold">1. ${top8[0].name}</span><span class="text-slate-400">vs</span><span class="text-white font-bold">8. ${top8[7].name}</span></div>
+                        <div class="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between"><span class="text-white font-bold">4. ${top8[3].name}</span><span class="text-slate-400">vs</span><span class="text-white font-bold">5. ${top8[4].name}</span></div>
+                        <div class="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between"><span class="text-white font-bold">2. ${top8[1].name}</span><span class="text-slate-400">vs</span><span class="text-white font-bold">7. ${top8[6].name}</span></div>
+                        <div class="p-2 bg-slate-950 rounded border border-slate-800 flex justify-between"><span class="text-white font-bold">3. ${top8[2].name}</span><span class="text-slate-400">vs</span><span class="text-white font-bold">6. ${top8[5].name}</span></div>
+                    </div>
+                </div>
+
+                <!-- SEMIFINALES -->
+                <div class="bg-slate-900 border border-amber-500/30 rounded-xl p-4 shadow space-y-3">
+                    <h3 class="font-bold text-amber-400 border-b border-slate-800 pb-2 text-sm flex justify-between items-center">
+                        <span><i class="fa-solid fa-chess-board mr-1"></i> Semifinales</span>
+                        <span class="text-xs text-slate-400">Cruce de Ganadores</span>
+                    </h3>
+                    <div class="space-y-4 text-xs pt-2">
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800 text-center">
+                            <p class="text-slate-400 mb-1">Ganador Llave 1 vs Ganador Llave 2</p>
+                            <span class="font-bold text-amber-400 text-sm">Por definir</span>
+                        </div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800 text-center">
+                            <p class="text-slate-400 mb-1">Ganador Llave 3 vs Ganador Llave 4</p>
+                            <span class="font-bold text-amber-400 text-sm">Por definir</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAN FINAL -->
+                <div class="bg-slate-900 border border-amber-500/30 rounded-xl p-4 shadow space-y-3">
+                    <h3 class="font-bold text-amber-400 border-b border-slate-800 pb-2 text-sm flex justify-between items-center">
+                        <span><i class="fa-solid fa-trophy text-amber-400 mr-1"></i> Gran Final</span>
+                        <span class="text-xs text-amber-300 font-bold">Por el Título</span>
+                    </h3>
+                    <div class="p-6 bg-gradient-to-b from-amber-500/10 to-slate-950 rounded border border-amber-500/40 text-center flex flex-col justify-center items-center h-40">
+                        <i class="fa-solid fa-medal text-amber-400 text-3xl mb-2"></i>
+                        <p class="text-xs text-slate-300 font-bold">Ganador Semifinal 1 vs Ganador Semifinal 2</p>
+                        <span class="text-amber-400 font-black text-sm mt-2">¡Gran Campeón de la Liga!</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handlePlayerSubmit(e) {
+            e.preventDefault();
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            const name = document.getElementById('newPlayerName').value.trim();
+            const venue = document.getElementById('newPlayerVenue').value;
+            if(!name) return;
+
+            const newId = players.length > 0 ? Math.max(...players.map(p => p.id)) + 1 : 1;
+            players.push({ id: newId, name, venue });
+            saveData();
+            document.getElementById('addPlayerForm').reset();
+            renderAdminPlayers();
+            updatePlayerSelects();
+        }
+
+        function deletePlayer(id) {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            if(confirm("¿Estás seguro de eliminar este jugador?")) {
+                players = players.filter(p => p.id !== id);
+                saveData();
+                renderAdminPlayers();
+                updatePlayerSelects();
+            }
+        }
+
+        function renderAdminPlayers() {
+            let tbody = document.getElementById('adminPlayersBody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            if(players.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-slate-500">No hay jugadores.</td></tr>`;
+                return;
+            }
+            players.forEach(p => {
+                tbody.innerHTML += `
+                    <tr class="border-b border-slate-800">
+                        <td class="p-2.5 text-slate-400">${p.id}</td>
+                        <td class="p-2.5 font-semibold text-white">${p.name}</td>
+                        <td class="p-2.5 text-xs text-slate-400">${p.venue}</td>
+                        <td class="p-2.5 text-right">
+                            <button onclick="deletePlayer(${p.id})" class="bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 rounded text-xs font-bold transition">
+                                <i class="fa-solid fa-trash"></i> Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updatePlayerSelects() {
+            const selects = document.querySelectorAll('.player-select');
+            selects.forEach(sel => {
+                sel.innerHTML = '<option value="">Seleccionar jugador...</option>';
+                players.forEach(p => {
+                    sel.innerHTML += `<option value="${p.id}">${p.name} (${p.venue})</option>`;
+                });
+            });
+        }
+
+        function renderUpcoming() {
+            let container = document.getElementById('calendarList');
+            let filterSelect = document.getElementById('filterRound');
+            if(!container) return;
+
+            if(filterSelect && filterSelect.options.length <= 1) {
+                for(let r = 1; r <= 19; r++) {
+                    filterSelect.innerHTML += `<option value="${r}">Jornada ${r}</option>`;
+                }
+            }
+
+            let selectedRound = filterSelect ? filterSelect.value : "ALL";
+            let list = upcomingMatches;
+
+            if(selectedRound !== "ALL") {
+                list = list.filter(m => m.round == selectedRound);
+            }
+
+            container.innerHTML = '';
+            if(list.length === 0) {
+                container.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">No hay partidos agendados para esta selección.</p>`;
+                return;
+            }
+
+            list.forEach(m => {
+                let p1 = players.find(x => x.id === m.p1Id);
+                let p2 = players.find(x => x.id === m.p2Id);
+                let name1 = p1 ? p1.name : "Jugador eliminado";
+                let name2 = p2 ? p2.name : "Jugador eliminado";
+
+                let deleteBtnHtml = isAdminLoggedIn ? `<button onclick="deleteUpcoming(${m.id})" class="text-red-400 hover:text-red-300 font-bold ml-2"><i class="fa-solid fa-trash"></i></button>` : '';
+
+                container.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 flex flex-col justify-between gap-3 shadow">
+                        <div class="flex justify-between items-center text-xs text-amber-400 font-semibold border-b border-slate-800 pb-2">
+                            <span><i class="fa-solid fa-flag-checkered mr-1"></i> Jornada ${m.round || '1'} — ${m.datetime}</span>
+                            ${deleteBtnHtml}
+                        </div>
+                        <div class="flex justify-between items-center font-bold text-white text-sm md:text-base text-center">
+                            <span class="w-5/12 text-left">${name1}</span>
+                            <span class="text-amber-500 text-xs px-2 py-1 bg-slate-950 rounded border border-slate-800">VS</span>
+                            <span class="w-5/12 text-right">${name2}</span>
+                        </div>
+                        <div class="text-xs text-slate-400 pt-1 border-t border-slate-800/60 flex items-center justify-between">
+                            <span><i class="fa-solid fa-location-dot text-emerald-500 mr-1"></i> Sede: ${m.venue}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteUpcoming(id) {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            if(confirm("¿Eliminar este partido programado?")) {
+                upcomingMatches = upcomingMatches.filter(m => m.id !== id);
+                saveData();
+                renderUpcoming();
+            }
+        }
+
+        function handleMatchSubmit(e) {
+            e.preventDefault();
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            const p1Id = parseInt(document.getElementById('matchP1').value);
+            const p2Id = parseInt(document.getElementById('matchP2').value);
+            const car1 = parseInt(document.getElementById('matchCar1').value);
+            const car2 = parseInt(document.getElementById('matchCar2').value);
+            let ent = parseInt(document.getElementById('matchInnings').value);
+            const sm = parseInt(document.getElementById('matchHighSeries').value) || 0;
+
+            if(p1Id === p2Id) {
+                alert("Un jugador no puede jugar contra sí mismo.");
+                return;
+            }
+
+            matches.push({ id: Date.now(), p1Id, p2Id, car1, car2, ent, sm1: sm, sm2: 0 });
+            saveData();
+            document.getElementById('addMatchForm').reset();
+            renderMatches();
+        }
+
+        function renderMatches() {
+            let container = document.getElementById('matchesList');
+            if(!container) return;
+            container.innerHTML = '';
+            if(matches.length === 0) {
+                container.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">No hay partidos registrados todavía.</p>`;
+                return;
+            }
+
+            matches.forEach(m => {
+                let p1 = players.find(x => x.id === m.p1Id);
+                let p2 = players.find(x => x.id === m.p2Id);
+                let name1 = p1 ? p1.name : "Jugador eliminado";
+                let name2 = p2 ? p2.name : "Jugador eliminado";
+
+                let deleteBtnHtml = isAdminLoggedIn ? `<button onclick="deleteMatch(${m.id})" class="text-red-400 hover:text-red-300 font-bold"><i class="fa-solid fa-trash"></i> Eliminar</button>` : '';
+
+                container.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 flex flex-col justify-between gap-3">
+                        <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-800 pb-2">
+                            <span>Partido oficial jugado</span>
+                            ${deleteBtnHtml}
+                        </div>
+                        <div class="flex justify-between items-center font-bold">
+                            <span class="text-white text-sm">${name1}</span>
+                            <span class="bg-amber-500 text-slate-950 px-3 py-1 rounded text-base">${m.car1} - ${m.car2}</span>
+                            <span class="text-white text-sm text-right">${name2}</span>
+                        </div>
+                        <div class="text-xs text-slate-400 flex justify-between">
+                            <span>Entradas: <strong class="text-white">${m.ent}</strong></span>
+                            <span>Promedio juego: <strong class="text-amber-400">${((m.car1 + m.car2)/ (m.ent * 2)).toFixed(3)}</strong></span>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteMatch(id) {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            if(confirm("¿Eliminar este partido registrado?")) {
+                matches = matches.filter(m => m.id !== id);
+                saveData();
+                renderMatches();
+            }
+        }
+
+        loadInitialData();
+    </script>
+</body>
+</html>
