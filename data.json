@@ -9,6 +9,11 @@
       "id": 2,
       "name": "Artury Barajas",
       "venue": "Tasca - Restaurant Billares Wilmaryck"
+    },
+    {
+      "id": 3,
+      "name": "Jose Acevedo",
+      "venue": "Billares Ibarra"
     }
   ],
   "matches": [],
