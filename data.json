@@ -44,6 +44,11 @@
       "id": 9,
       "name": "Nestor Sanabria",
       "venue": "Billares Ibarra"
+    },
+    {
+      "id": 10,
+      "name": "Jorge Blanco",
+      "venue": "Billares Ibarra"
     }
   ],
   "matches": [],
