@@ -49,6 +49,11 @@
       "id": 10,
       "name": "Jorge Blanco",
       "venue": "Billares Ibarra"
+    },
+    {
+      "id": 11,
+      "name": "Eloy Romero",
+      "venue": "Tasca - Restaurant Billares Wilmaryck"
     }
   ],
   "matches": [],
