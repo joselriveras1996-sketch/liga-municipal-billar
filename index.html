@@ -169,15 +169,22 @@
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Generador Automático de Torneo (19 Jornadas / 4 Mesas)
                     </h3>
                     <p class="text-xs text-slate-300 mb-4">
-                        Genera automáticamente los 190 partidos de solo ida distribuyendo 4 mesas a partir de las 2:00 PM con turnos de 1 hora.
+                        Genera automáticamente los partidos de solo ida distribuidos en jornadas semanales entre Wilmaryck e Ibarra.
                     </p>
-                    <div class="flex flex-col md:flex-row items-end gap-3">
+                    <div class="flex flex-col md:flex-row items-end gap-3 mb-4">
                         <div class="w-full md:w-1/2">
                             <label class="block text-xs text-slate-400 mb-1">Fecha de inicio (Primer Viernes del Torneo):</label>
                             <input type="date" id="tournamentStartDate" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-xs text-white">
                         </div>
                         <button onclick="generateAutomaticSchedule()" class="w-full md:w-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2 px-4 rounded text-xs tracking-wider uppercase transition shadow">
                             <i class="fa-solid fa-rotate-right mr-1"></i> Generar Calendario Completo
+                        </button>
+                    </div>
+
+                    <!-- BOTÓN DE BORRADO COMPLETO -->
+                    <div class="pt-2 border-t border-slate-800">
+                        <button onclick="clearAllUpcomingMatches()" class="w-full bg-red-600/80 hover:bg-red-600 text-white font-bold py-2.5 px-4 rounded text-xs tracking-wider uppercase transition shadow flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-trash-can"></i> Borrar Todos los Partidos Programados
                         </button>
                     </div>
                 </div>
@@ -401,7 +408,6 @@
             for (let round = 0; round < roundsCount; round++) {
                 let roundNum = round + 1;
                 
-                // CADA JORNADA ES UN VIERNES DIFERENTE (Avanza 7 días por cada ronda)
                 let roundDate = new Date(baseDate);
                 roundDate.setDate(roundDate.getDate() + (round * 7));
                 let dateStr = roundDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -412,12 +418,11 @@
                     let p2 = pool[numPlayers - 1 - i];
 
                     if (p1.id !== null && p2.id !== null) {
-                        // Repartir sedes: Mitad en Wilmaryck, mitad en Ibarra para esta jornada
                         let venueIndex = Math.floor(matchInRoundCount / 2) % 2;
                         let venueName = venueIndex === 0 ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
                         
-                        let tableNum = (matchInRoundCount % 2) + 1; // Mesa 1 o 2
-                        let hourOffset = Math.floor(matchInRoundCount / 4); // Turnos sucesivos si hay más de 4 partidos
+                        let tableNum = (matchInRoundCount % 2) + 1;
+                        let hourOffset = Math.floor(matchInRoundCount / 4);
                         let timeHour = 2 + hourOffset;
                         let datetimeFormatted = `${dateStr} — ${timeHour}:00 PM`;
 
@@ -441,6 +446,21 @@
             alert(`¡Calendario generado con éxito! 19 jornadas semanales distribuidas entre Wilmaryck e Ibarra.`);
             renderUpcoming();
         }
+
+        // FUNCIÓN PARA BORRAR TODOS LOS PARTIDOS PROGRAMADOS
+        function clearAllUpcomingMatches() {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            if (upcomingMatches.length === 0) {
+                return alert("No hay partidos programados para borrar.");
+            }
+            if (confirm("¿Estás seguro de eliminar TODOS los partidos programados del calendario? Esta acción no se puede deshacer.")) {
+                upcomingMatches = [];
+                saveData();
+                renderUpcoming();
+                alert("¡Se han borrado todos los partidos programados con éxito!");
+            }
+        }
+
         function switchTab(tab) {
             document.getElementById('tab-standings').classList.add('hidden');
             document.getElementById('tab-calendar').classList.add('hidden');
@@ -733,7 +753,7 @@
                 container.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 flex flex-col justify-between gap-3 shadow">
                         <div class="flex justify-between items-center text-xs text-amber-400 font-semibold border-b border-slate-800 pb-2">
-                            <span><i class="fa-solid fa-flag-checkered mr-1"></i> Jornada ${m.round || '1'} — ${m.datetime}</span>
+                            <span><i class="fa-solid fa-flag-checkered mr-1"></i> Jornada ${m.round || '1'} — ${m.datetime} (Mesa ${m.table})</span>
                             ${deleteBtnHtml}
                         </div>
                         <div class="flex justify-between items-center font-bold text-white text-sm md:text-base text-center">
