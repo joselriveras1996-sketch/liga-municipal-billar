@@ -382,7 +382,7 @@
                 return alert("Por favor selecciona la fecha de inicio del primer viernes.");
             }
 
-            if (!confirm(`Se van a generar las jornadas automáticamente distribuyendo las 2 mesas por sede (Wilmaryck e Ibarra) para los ${players.length} jugadores. ¿Deseas continuar?`)) {
+            if (!confirm(`Se van a generar las 19 jornadas (1 por semana) distribuyendo las mesas en Wilmaryck e Ibarra. ¿Deseas continuar?`)) {
                 return;
             }
 
@@ -396,15 +396,14 @@
             let matchesPerRound = numPlayers / 2;
             let generatedUpcoming = [];
 
-            let currentDate = new Date(startDateInput + "T00:00:00");
+            let baseDate = new Date(startDateInput + "T00:00:00");
 
             for (let round = 0; round < roundsCount; round++) {
                 let roundNum = round + 1;
-                let roundDate = new Date(currentDate);
-                let weekIndex = Math.floor(round / 3);
-                let dayInWeek = round % 3;
-
-                roundDate.setDate(roundDate.getDate() + (weekIndex * 7) + (dayInWeek === 2 ? 1 : 0));
+                
+                // CADA JORNADA ES UN VIERNES DIFERENTE (Avanza 7 días por cada ronda)
+                let roundDate = new Date(baseDate);
+                roundDate.setDate(roundDate.getDate() + (round * 7));
                 let dateStr = roundDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' });
 
                 let matchInRoundCount = 0;
@@ -413,11 +412,12 @@
                     let p2 = pool[numPlayers - 1 - i];
 
                     if (p1.id !== null && p2.id !== null) {
+                        // Repartir sedes: Mitad en Wilmaryck, mitad en Ibarra para esta jornada
                         let venueIndex = Math.floor(matchInRoundCount / 2) % 2;
                         let venueName = venueIndex === 0 ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
                         
-                        let tableNum = (matchInRoundCount % 2) + 1;
-                        let hourOffset = Math.floor(matchInRoundCount / 4);
+                        let tableNum = (matchInRoundCount % 2) + 1; // Mesa 1 o 2
+                        let hourOffset = Math.floor(matchInRoundCount / 4); // Turnos sucesivos si hay más de 4 partidos
                         let timeHour = 2 + hourOffset;
                         let datetimeFormatted = `${dateStr} — ${timeHour}:00 PM`;
 
@@ -438,10 +438,9 @@
 
             upcomingMatches = generatedUpcoming;
             saveData();
-            alert(`¡Se generaron con éxito ${upcomingMatches.length} partidos repartidos equitativamente entre Billares Wilmaryck e Ibarra (Mesas 1 y 2)!`);
+            alert(`¡Calendario generado con éxito! 19 jornadas semanales distribuidas entre Wilmaryck e Ibarra.`);
             renderUpcoming();
         }
-
         function switchTab(tab) {
             document.getElementById('tab-standings').classList.add('hidden');
             document.getElementById('tab-calendar').classList.add('hidden');
