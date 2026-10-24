@@ -113,5 +113,1716 @@
       "sm2": 0
     }
   ],
-  "upcoming": []
+  "upcoming": [
+    {
+      "id": 1792852856014.4302,
+      "round": 1,
+      "p1Id": 1,
+      "p2Id": 20,
+      "datetime": "vie, 30 oct. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.561,
+      "round": 1,
+      "p1Id": 2,
+      "p2Id": 19,
+      "datetime": "vie, 30 oct. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.3853,
+      "round": 1,
+      "p1Id": 3,
+      "p2Id": 18,
+      "datetime": "vie, 30 oct. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.0894,
+      "round": 1,
+      "p1Id": 4,
+      "p2Id": 17,
+      "datetime": "vie, 30 oct. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.3586,
+      "round": 1,
+      "p1Id": 5,
+      "p2Id": 16,
+      "datetime": "vie, 30 oct. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.6873,
+      "round": 1,
+      "p1Id": 6,
+      "p2Id": 15,
+      "datetime": "vie, 30 oct. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.7139,
+      "round": 1,
+      "p1Id": 7,
+      "p2Id": 14,
+      "datetime": "vie, 30 oct. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.9902,
+      "round": 1,
+      "p1Id": 8,
+      "p2Id": 13,
+      "datetime": "vie, 30 oct. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.278,
+      "round": 1,
+      "p1Id": 9,
+      "p2Id": 12,
+      "datetime": "vie, 30 oct. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.6038,
+      "round": 1,
+      "p1Id": 10,
+      "p2Id": 11,
+      "datetime": "vie, 30 oct. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.2417,
+      "round": 2,
+      "p1Id": 1,
+      "p2Id": 19,
+      "datetime": "vie, 30 oct. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.3782,
+      "round": 2,
+      "p1Id": 20,
+      "p2Id": 18,
+      "datetime": "vie, 30 oct. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.4805,
+      "round": 2,
+      "p1Id": 2,
+      "p2Id": 17,
+      "datetime": "vie, 30 oct. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.6663,
+      "round": 2,
+      "p1Id": 3,
+      "p2Id": 16,
+      "datetime": "vie, 30 oct. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.3416,
+      "round": 2,
+      "p1Id": 4,
+      "p2Id": 15,
+      "datetime": "vie, 30 oct. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.2854,
+      "round": 2,
+      "p1Id": 5,
+      "p2Id": 14,
+      "datetime": "vie, 30 oct. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.7734,
+      "round": 2,
+      "p1Id": 6,
+      "p2Id": 13,
+      "datetime": "vie, 30 oct. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.3613,
+      "round": 2,
+      "p1Id": 7,
+      "p2Id": 12,
+      "datetime": "vie, 30 oct. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856014.3445,
+      "round": 2,
+      "p1Id": 8,
+      "p2Id": 11,
+      "datetime": "vie, 30 oct. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856014.378,
+      "round": 2,
+      "p1Id": 9,
+      "p2Id": 10,
+      "datetime": "vie, 30 oct. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.3318,
+      "round": 3,
+      "p1Id": 1,
+      "p2Id": 18,
+      "datetime": "sáb, 31 oct. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.79,
+      "round": 3,
+      "p1Id": 19,
+      "p2Id": 17,
+      "datetime": "sáb, 31 oct. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.1113,
+      "round": 3,
+      "p1Id": 20,
+      "p2Id": 16,
+      "datetime": "sáb, 31 oct. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.2073,
+      "round": 3,
+      "p1Id": 2,
+      "p2Id": 15,
+      "datetime": "sáb, 31 oct. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.0593,
+      "round": 3,
+      "p1Id": 3,
+      "p2Id": 14,
+      "datetime": "sáb, 31 oct. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.5823,
+      "round": 3,
+      "p1Id": 4,
+      "p2Id": 13,
+      "datetime": "sáb, 31 oct. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.7063,
+      "round": 3,
+      "p1Id": 5,
+      "p2Id": 12,
+      "datetime": "sáb, 31 oct. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.2305,
+      "round": 3,
+      "p1Id": 6,
+      "p2Id": 11,
+      "datetime": "sáb, 31 oct. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.0518,
+      "round": 3,
+      "p1Id": 7,
+      "p2Id": 10,
+      "datetime": "sáb, 31 oct. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.3433,
+      "round": 3,
+      "p1Id": 8,
+      "p2Id": 9,
+      "datetime": "sáb, 31 oct. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.1797,
+      "round": 4,
+      "p1Id": 1,
+      "p2Id": 17,
+      "datetime": "vie, 6 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.3242,
+      "round": 4,
+      "p1Id": 18,
+      "p2Id": 16,
+      "datetime": "vie, 6 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.2527,
+      "round": 4,
+      "p1Id": 19,
+      "p2Id": 15,
+      "datetime": "vie, 6 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.946,
+      "round": 4,
+      "p1Id": 20,
+      "p2Id": 14,
+      "datetime": "vie, 6 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.9124,
+      "round": 4,
+      "p1Id": 2,
+      "p2Id": 13,
+      "datetime": "vie, 6 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.981,
+      "round": 4,
+      "p1Id": 3,
+      "p2Id": 12,
+      "datetime": "vie, 6 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.4927,
+      "round": 4,
+      "p1Id": 4,
+      "p2Id": 11,
+      "datetime": "vie, 6 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.5955,
+      "round": 4,
+      "p1Id": 5,
+      "p2Id": 10,
+      "datetime": "vie, 6 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.443,
+      "round": 4,
+      "p1Id": 6,
+      "p2Id": 9,
+      "datetime": "vie, 6 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.4844,
+      "round": 4,
+      "p1Id": 7,
+      "p2Id": 8,
+      "datetime": "vie, 6 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.1553,
+      "round": 5,
+      "p1Id": 1,
+      "p2Id": 16,
+      "datetime": "vie, 6 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.4805,
+      "round": 5,
+      "p1Id": 17,
+      "p2Id": 15,
+      "datetime": "vie, 6 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.7097,
+      "round": 5,
+      "p1Id": 18,
+      "p2Id": 14,
+      "datetime": "vie, 6 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.0132,
+      "round": 5,
+      "p1Id": 19,
+      "p2Id": 13,
+      "datetime": "vie, 6 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.5083,
+      "round": 5,
+      "p1Id": 20,
+      "p2Id": 12,
+      "datetime": "vie, 6 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.2712,
+      "round": 5,
+      "p1Id": 2,
+      "p2Id": 11,
+      "datetime": "vie, 6 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.8381,
+      "round": 5,
+      "p1Id": 3,
+      "p2Id": 10,
+      "datetime": "vie, 6 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.079,
+      "round": 5,
+      "p1Id": 4,
+      "p2Id": 9,
+      "datetime": "vie, 6 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.7983,
+      "round": 5,
+      "p1Id": 5,
+      "p2Id": 8,
+      "datetime": "vie, 6 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.5205,
+      "round": 5,
+      "p1Id": 6,
+      "p2Id": 7,
+      "datetime": "vie, 6 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.306,
+      "round": 6,
+      "p1Id": 1,
+      "p2Id": 15,
+      "datetime": "sáb, 7 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.9724,
+      "round": 6,
+      "p1Id": 16,
+      "p2Id": 14,
+      "datetime": "sáb, 7 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.3145,
+      "round": 6,
+      "p1Id": 17,
+      "p2Id": 13,
+      "datetime": "sáb, 7 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.9856,
+      "round": 6,
+      "p1Id": 18,
+      "p2Id": 12,
+      "datetime": "sáb, 7 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.5408,
+      "round": 6,
+      "p1Id": 19,
+      "p2Id": 11,
+      "datetime": "sáb, 7 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.4854,
+      "round": 6,
+      "p1Id": 20,
+      "p2Id": 10,
+      "datetime": "sáb, 7 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.4817,
+      "round": 6,
+      "p1Id": 2,
+      "p2Id": 9,
+      "datetime": "sáb, 7 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.583,
+      "round": 6,
+      "p1Id": 3,
+      "p2Id": 8,
+      "datetime": "sáb, 7 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.0437,
+      "round": 6,
+      "p1Id": 4,
+      "p2Id": 7,
+      "datetime": "sáb, 7 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.918,
+      "round": 6,
+      "p1Id": 5,
+      "p2Id": 6,
+      "datetime": "sáb, 7 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.2847,
+      "round": 7,
+      "p1Id": 1,
+      "p2Id": 14,
+      "datetime": "vie, 13 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.9329,
+      "round": 7,
+      "p1Id": 15,
+      "p2Id": 13,
+      "datetime": "vie, 13 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.862,
+      "round": 7,
+      "p1Id": 16,
+      "p2Id": 12,
+      "datetime": "vie, 13 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.7964,
+      "round": 7,
+      "p1Id": 17,
+      "p2Id": 11,
+      "datetime": "vie, 13 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.235,
+      "round": 7,
+      "p1Id": 18,
+      "p2Id": 10,
+      "datetime": "vie, 13 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.5042,
+      "round": 7,
+      "p1Id": 19,
+      "p2Id": 9,
+      "datetime": "vie, 13 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.366,
+      "round": 7,
+      "p1Id": 20,
+      "p2Id": 8,
+      "datetime": "vie, 13 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.936,
+      "round": 7,
+      "p1Id": 2,
+      "p2Id": 7,
+      "datetime": "vie, 13 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.5857,
+      "round": 7,
+      "p1Id": 3,
+      "p2Id": 6,
+      "datetime": "vie, 13 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.9143,
+      "round": 7,
+      "p1Id": 4,
+      "p2Id": 5,
+      "datetime": "vie, 13 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.1963,
+      "round": 8,
+      "p1Id": 1,
+      "p2Id": 13,
+      "datetime": "vie, 13 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.1309,
+      "round": 8,
+      "p1Id": 14,
+      "p2Id": 12,
+      "datetime": "vie, 13 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.6003,
+      "round": 8,
+      "p1Id": 15,
+      "p2Id": 11,
+      "datetime": "vie, 13 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.2568,
+      "round": 8,
+      "p1Id": 16,
+      "p2Id": 10,
+      "datetime": "vie, 13 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.126,
+      "round": 8,
+      "p1Id": 17,
+      "p2Id": 9,
+      "datetime": "vie, 13 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.6606,
+      "round": 8,
+      "p1Id": 18,
+      "p2Id": 8,
+      "datetime": "vie, 13 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.531,
+      "round": 8,
+      "p1Id": 19,
+      "p2Id": 7,
+      "datetime": "vie, 13 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.9705,
+      "round": 8,
+      "p1Id": 20,
+      "p2Id": 6,
+      "datetime": "vie, 13 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856015.0198,
+      "round": 8,
+      "p1Id": 2,
+      "p2Id": 5,
+      "datetime": "vie, 13 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856015.971,
+      "round": 8,
+      "p1Id": 3,
+      "p2Id": 4,
+      "datetime": "vie, 13 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.8635,
+      "round": 9,
+      "p1Id": 1,
+      "p2Id": 12,
+      "datetime": "sáb, 14 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.5935,
+      "round": 9,
+      "p1Id": 13,
+      "p2Id": 11,
+      "datetime": "sáb, 14 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.7231,
+      "round": 9,
+      "p1Id": 14,
+      "p2Id": 10,
+      "datetime": "sáb, 14 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.9097,
+      "round": 9,
+      "p1Id": 15,
+      "p2Id": 9,
+      "datetime": "sáb, 14 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.1807,
+      "round": 9,
+      "p1Id": 16,
+      "p2Id": 8,
+      "datetime": "sáb, 14 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.4512,
+      "round": 9,
+      "p1Id": 17,
+      "p2Id": 7,
+      "datetime": "sáb, 14 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.2798,
+      "round": 9,
+      "p1Id": 18,
+      "p2Id": 6,
+      "datetime": "sáb, 14 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.8296,
+      "round": 9,
+      "p1Id": 19,
+      "p2Id": 5,
+      "datetime": "sáb, 14 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.824,
+      "round": 9,
+      "p1Id": 20,
+      "p2Id": 4,
+      "datetime": "sáb, 14 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.1013,
+      "round": 9,
+      "p1Id": 2,
+      "p2Id": 3,
+      "datetime": "sáb, 14 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.6577,
+      "round": 10,
+      "p1Id": 1,
+      "p2Id": 11,
+      "datetime": "vie, 20 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.598,
+      "round": 10,
+      "p1Id": 12,
+      "p2Id": 10,
+      "datetime": "vie, 20 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.2942,
+      "round": 10,
+      "p1Id": 13,
+      "p2Id": 9,
+      "datetime": "vie, 20 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.6785,
+      "round": 10,
+      "p1Id": 14,
+      "p2Id": 8,
+      "datetime": "vie, 20 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.1458,
+      "round": 10,
+      "p1Id": 15,
+      "p2Id": 7,
+      "datetime": "vie, 20 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.0266,
+      "round": 10,
+      "p1Id": 16,
+      "p2Id": 6,
+      "datetime": "vie, 20 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.4387,
+      "round": 10,
+      "p1Id": 17,
+      "p2Id": 5,
+      "datetime": "vie, 20 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.2576,
+      "round": 10,
+      "p1Id": 18,
+      "p2Id": 4,
+      "datetime": "vie, 20 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.8176,
+      "round": 10,
+      "p1Id": 19,
+      "p2Id": 3,
+      "datetime": "vie, 20 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.4521,
+      "round": 10,
+      "p1Id": 20,
+      "p2Id": 2,
+      "datetime": "vie, 20 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.3367,
+      "round": 11,
+      "p1Id": 1,
+      "p2Id": 10,
+      "datetime": "vie, 20 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.2593,
+      "round": 11,
+      "p1Id": 11,
+      "p2Id": 9,
+      "datetime": "vie, 20 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.1418,
+      "round": 11,
+      "p1Id": 12,
+      "p2Id": 8,
+      "datetime": "vie, 20 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.9456,
+      "round": 11,
+      "p1Id": 13,
+      "p2Id": 7,
+      "datetime": "vie, 20 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.9878,
+      "round": 11,
+      "p1Id": 14,
+      "p2Id": 6,
+      "datetime": "vie, 20 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.8433,
+      "round": 11,
+      "p1Id": 15,
+      "p2Id": 5,
+      "datetime": "vie, 20 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.5247,
+      "round": 11,
+      "p1Id": 16,
+      "p2Id": 4,
+      "datetime": "vie, 20 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.1414,
+      "round": 11,
+      "p1Id": 17,
+      "p2Id": 3,
+      "datetime": "vie, 20 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.6367,
+      "round": 11,
+      "p1Id": 18,
+      "p2Id": 2,
+      "datetime": "vie, 20 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.5833,
+      "round": 11,
+      "p1Id": 19,
+      "p2Id": 20,
+      "datetime": "vie, 20 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.1997,
+      "round": 12,
+      "p1Id": 1,
+      "p2Id": 9,
+      "datetime": "sáb, 21 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.9316,
+      "round": 12,
+      "p1Id": 10,
+      "p2Id": 8,
+      "datetime": "sáb, 21 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.0708,
+      "round": 12,
+      "p1Id": 11,
+      "p2Id": 7,
+      "datetime": "sáb, 21 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.1025,
+      "round": 12,
+      "p1Id": 12,
+      "p2Id": 6,
+      "datetime": "sáb, 21 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.7136,
+      "round": 12,
+      "p1Id": 13,
+      "p2Id": 5,
+      "datetime": "sáb, 21 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.501,
+      "round": 12,
+      "p1Id": 14,
+      "p2Id": 4,
+      "datetime": "sáb, 21 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.935,
+      "round": 12,
+      "p1Id": 15,
+      "p2Id": 3,
+      "datetime": "sáb, 21 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.2905,
+      "round": 12,
+      "p1Id": 16,
+      "p2Id": 2,
+      "datetime": "sáb, 21 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.5247,
+      "round": 12,
+      "p1Id": 17,
+      "p2Id": 20,
+      "datetime": "sáb, 21 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.0623,
+      "round": 12,
+      "p1Id": 18,
+      "p2Id": 19,
+      "datetime": "sáb, 21 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.2107,
+      "round": 13,
+      "p1Id": 1,
+      "p2Id": 8,
+      "datetime": "vie, 27 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.8325,
+      "round": 13,
+      "p1Id": 9,
+      "p2Id": 7,
+      "datetime": "vie, 27 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.7878,
+      "round": 13,
+      "p1Id": 10,
+      "p2Id": 6,
+      "datetime": "vie, 27 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.0427,
+      "round": 13,
+      "p1Id": 11,
+      "p2Id": 5,
+      "datetime": "vie, 27 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.6335,
+      "round": 13,
+      "p1Id": 12,
+      "p2Id": 4,
+      "datetime": "vie, 27 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.5442,
+      "round": 13,
+      "p1Id": 13,
+      "p2Id": 3,
+      "datetime": "vie, 27 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.4087,
+      "round": 13,
+      "p1Id": 14,
+      "p2Id": 2,
+      "datetime": "vie, 27 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.5881,
+      "round": 13,
+      "p1Id": 15,
+      "p2Id": 20,
+      "datetime": "vie, 27 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856016.3774,
+      "round": 13,
+      "p1Id": 16,
+      "p2Id": 19,
+      "datetime": "vie, 27 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856016.635,
+      "round": 13,
+      "p1Id": 17,
+      "p2Id": 18,
+      "datetime": "vie, 27 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.7556,
+      "round": 14,
+      "p1Id": 1,
+      "p2Id": 7,
+      "datetime": "vie, 27 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.632,
+      "round": 14,
+      "p1Id": 8,
+      "p2Id": 6,
+      "datetime": "vie, 27 nov. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.4575,
+      "round": 14,
+      "p1Id": 9,
+      "p2Id": 5,
+      "datetime": "vie, 27 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.4175,
+      "round": 14,
+      "p1Id": 10,
+      "p2Id": 4,
+      "datetime": "vie, 27 nov. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.471,
+      "round": 14,
+      "p1Id": 11,
+      "p2Id": 3,
+      "datetime": "vie, 27 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.144,
+      "round": 14,
+      "p1Id": 12,
+      "p2Id": 2,
+      "datetime": "vie, 27 nov. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.8176,
+      "round": 14,
+      "p1Id": 13,
+      "p2Id": 20,
+      "datetime": "vie, 27 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.2083,
+      "round": 14,
+      "p1Id": 14,
+      "p2Id": 19,
+      "datetime": "vie, 27 nov. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.2002,
+      "round": 14,
+      "p1Id": 15,
+      "p2Id": 18,
+      "datetime": "vie, 27 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.6643,
+      "round": 14,
+      "p1Id": 16,
+      "p2Id": 17,
+      "datetime": "vie, 27 nov. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.3801,
+      "round": 15,
+      "p1Id": 1,
+      "p2Id": 6,
+      "datetime": "sáb, 28 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.7593,
+      "round": 15,
+      "p1Id": 7,
+      "p2Id": 5,
+      "datetime": "sáb, 28 nov. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.5356,
+      "round": 15,
+      "p1Id": 8,
+      "p2Id": 4,
+      "datetime": "sáb, 28 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.0151,
+      "round": 15,
+      "p1Id": 9,
+      "p2Id": 3,
+      "datetime": "sáb, 28 nov. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.0325,
+      "round": 15,
+      "p1Id": 10,
+      "p2Id": 2,
+      "datetime": "sáb, 28 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.3245,
+      "round": 15,
+      "p1Id": 11,
+      "p2Id": 20,
+      "datetime": "sáb, 28 nov. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.697,
+      "round": 15,
+      "p1Id": 12,
+      "p2Id": 19,
+      "datetime": "sáb, 28 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.3245,
+      "round": 15,
+      "p1Id": 13,
+      "p2Id": 18,
+      "datetime": "sáb, 28 nov. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.7976,
+      "round": 15,
+      "p1Id": 14,
+      "p2Id": 17,
+      "datetime": "sáb, 28 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.6733,
+      "round": 15,
+      "p1Id": 15,
+      "p2Id": 16,
+      "datetime": "sáb, 28 nov. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.634,
+      "round": 16,
+      "p1Id": 1,
+      "p2Id": 5,
+      "datetime": "vie, 4 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.2324,
+      "round": 16,
+      "p1Id": 6,
+      "p2Id": 4,
+      "datetime": "vie, 4 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.1206,
+      "round": 16,
+      "p1Id": 7,
+      "p2Id": 3,
+      "datetime": "vie, 4 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.1602,
+      "round": 16,
+      "p1Id": 8,
+      "p2Id": 2,
+      "datetime": "vie, 4 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.7197,
+      "round": 16,
+      "p1Id": 9,
+      "p2Id": 20,
+      "datetime": "vie, 4 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.6145,
+      "round": 16,
+      "p1Id": 10,
+      "p2Id": 19,
+      "datetime": "vie, 4 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.3433,
+      "round": 16,
+      "p1Id": 11,
+      "p2Id": 18,
+      "datetime": "vie, 4 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.1917,
+      "round": 16,
+      "p1Id": 12,
+      "p2Id": 17,
+      "datetime": "vie, 4 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.7769,
+      "round": 16,
+      "p1Id": 13,
+      "p2Id": 16,
+      "datetime": "vie, 4 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.6934,
+      "round": 16,
+      "p1Id": 14,
+      "p2Id": 15,
+      "datetime": "vie, 4 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.5012,
+      "round": 17,
+      "p1Id": 1,
+      "p2Id": 4,
+      "datetime": "vie, 4 dic. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.691,
+      "round": 17,
+      "p1Id": 5,
+      "p2Id": 3,
+      "datetime": "vie, 4 dic. — 5:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.2053,
+      "round": 17,
+      "p1Id": 6,
+      "p2Id": 2,
+      "datetime": "vie, 4 dic. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.0745,
+      "round": 17,
+      "p1Id": 7,
+      "p2Id": 20,
+      "datetime": "vie, 4 dic. — 5:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.4424,
+      "round": 17,
+      "p1Id": 8,
+      "p2Id": 19,
+      "datetime": "vie, 4 dic. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.2583,
+      "round": 17,
+      "p1Id": 9,
+      "p2Id": 18,
+      "datetime": "vie, 4 dic. — 6:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.1255,
+      "round": 17,
+      "p1Id": 10,
+      "p2Id": 17,
+      "datetime": "vie, 4 dic. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.7212,
+      "round": 17,
+      "p1Id": 11,
+      "p2Id": 16,
+      "datetime": "vie, 4 dic. — 6:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.5037,
+      "round": 17,
+      "p1Id": 12,
+      "p2Id": 15,
+      "datetime": "vie, 4 dic. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.3591,
+      "round": 17,
+      "p1Id": 13,
+      "p2Id": 14,
+      "datetime": "vie, 4 dic. — 7:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.1155,
+      "round": 18,
+      "p1Id": 1,
+      "p2Id": 3,
+      "datetime": "sáb, 5 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.1191,
+      "round": 18,
+      "p1Id": 4,
+      "p2Id": 2,
+      "datetime": "sáb, 5 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.8755,
+      "round": 18,
+      "p1Id": 5,
+      "p2Id": 20,
+      "datetime": "sáb, 5 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.452,
+      "round": 18,
+      "p1Id": 6,
+      "p2Id": 19,
+      "datetime": "sáb, 5 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.2266,
+      "round": 18,
+      "p1Id": 7,
+      "p2Id": 18,
+      "datetime": "sáb, 5 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.25,
+      "round": 18,
+      "p1Id": 8,
+      "p2Id": 17,
+      "datetime": "sáb, 5 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.1924,
+      "round": 18,
+      "p1Id": 9,
+      "p2Id": 16,
+      "datetime": "sáb, 5 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.364,
+      "round": 18,
+      "p1Id": 10,
+      "p2Id": 15,
+      "datetime": "sáb, 5 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.071,
+      "round": 18,
+      "p1Id": 11,
+      "p2Id": 14,
+      "datetime": "sáb, 5 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.7864,
+      "round": 18,
+      "p1Id": 12,
+      "p2Id": 13,
+      "datetime": "sáb, 5 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.9482,
+      "round": 19,
+      "p1Id": 1,
+      "p2Id": 2,
+      "datetime": "vie, 11 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.4128,
+      "round": 19,
+      "p1Id": 3,
+      "p2Id": 20,
+      "datetime": "vie, 11 dic. — 2:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.4858,
+      "round": 19,
+      "p1Id": 4,
+      "p2Id": 19,
+      "datetime": "vie, 11 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.4006,
+      "round": 19,
+      "p1Id": 5,
+      "p2Id": 18,
+      "datetime": "vie, 11 dic. — 2:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.1963,
+      "round": 19,
+      "p1Id": 6,
+      "p2Id": 17,
+      "datetime": "vie, 11 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.1768,
+      "round": 19,
+      "p1Id": 7,
+      "p2Id": 16,
+      "datetime": "vie, 11 dic. — 3:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.5874,
+      "round": 19,
+      "p1Id": 8,
+      "p2Id": 15,
+      "datetime": "vie, 11 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.5427,
+      "round": 19,
+      "p1Id": 9,
+      "p2Id": 14,
+      "datetime": "vie, 11 dic. — 3:00 PM",
+      "venue": "Billares Ibarra",
+      "table": 2
+    },
+    {
+      "id": 1792852856017.075,
+      "round": 19,
+      "p1Id": 10,
+      "p2Id": 13,
+      "datetime": "vie, 11 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 1
+    },
+    {
+      "id": 1792852856017.791,
+      "round": 19,
+      "p1Id": 11,
+      "p2Id": 12,
+      "datetime": "vie, 11 dic. — 4:00 PM",
+      "venue": "Tasca - Restaurant Billares Wilmaryck",
+      "table": 2
+    }
+  ]
 }
