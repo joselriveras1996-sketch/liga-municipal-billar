@@ -101,17 +101,6 @@
       "venue": "Billares Ibarra"
     }
   ],
-  "matches": [
-    {
-      "id": 1792785973148,
-      "p1Id": 1,
-      "p2Id": 6,
-      "car1": 5,
-      "car2": 12,
-      "ent": 15,
-      "sm1": 4,
-      "sm2": 0
-    }
-  ],
+  "matches": [],
   "upcoming": []
 }
