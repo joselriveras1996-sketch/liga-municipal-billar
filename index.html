@@ -169,11 +169,11 @@
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Generador Automático de Torneo (19 Jornadas / 4 Mesas)
                     </h3>
                     <p class="text-xs text-slate-300 mb-4">
-                        Genera automáticamente los partidos de solo ida distribuidos en jornadas semanales entre Wilmaryck e Ibarra.
+                        Genera automáticamente los partidos de solo ida distribuidos en jornadas de fin de semana (Sábados y Domingos) manteniendo al jugador en la misma sede el mismo día.
                     </p>
                     <div class="flex flex-col md:flex-row items-end gap-3 mb-4">
                         <div class="w-full md:w-1/2">
-                            <label class="block text-xs text-slate-400 mb-1">Fecha de inicio (Primer Viernes del Torneo):</label>
+                            <label class="block text-xs text-slate-400 mb-1">Fecha de inicio (Primer Sábado):</label>
                             <input type="date" id="tournamentStartDate" class="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-xs text-white">
                         </div>
                         <button onclick="generateAutomaticSchedule()" class="w-full md:w-1/2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2 px-4 rounded text-xs tracking-wider uppercase transition shadow">
@@ -389,7 +389,7 @@
                 return alert("Por favor selecciona la fecha de inicio (Primer Sábado).");
             }
 
-            if (!confirm(`Se van a generar las 19 jornadas (3 jornadas semanales entre sábado y domingo). ¿Deseas continuar?`)) {
+            if (!confirm(`Se van a generar las 19 jornadas (Sábados y Domingos, manteniendo al jugador en la misma sede el mismo día). ¿Deseas continuar?`)) {
                 return;
             }
 
@@ -404,55 +404,71 @@
             let generatedUpcoming = [];
 
             let baseDate = new Date(startDateInput + "T00:00:00");
+            let playerDayVenue = {};
 
             for (let round = 0; round < roundsCount; round++) {
                 let roundNum = round + 1;
                 
-                // Cálculo de semanas transcurridas y días (3 jornadas por semana: Sáb T1, Sáb T2, Dom T1)
                 let weekIndex = Math.floor(round / 3);
                 let dayInWeek = round % 3; // 0 = Sábado T1, 1 = Sábado T2, 2 = Domingo T1
                 
                 let roundDate = new Date(baseDate);
-                let daysToAdd = (weekIndex * 7) + (dayInWeek === 2 ? 1 : 0); // Domingo suma 1 día más al sábado base
+                let daysToAdd = (weekIndex * 7) + (dayInWeek === 2 ? 1 : 0);
                 roundDate.setDate(roundDate.getDate() + daysToAdd);
 
                 let dateStr = roundDate.toLocaleDateString('es-VE', { weekday: 'short', day: 'numeric', month: 'short' });
 
-                let matchInRoundCount = 0;
+                let roundMatches = [];
                 for (let i = 0; i < matchesPerRound; i++) {
                     let p1 = pool[i];
                     let p2 = pool[numPlayers - 1 - i];
-
                     if (p1.id !== null && p2.id !== null) {
-                        let venueIndex = Math.floor(matchInRoundCount / 2) % 2;
-                        let venueName = venueIndex === 0 ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
-                        
-                        let tableNum = (matchInRoundCount % 2) + 1;
-                        
-                        // Si es la segunda jornada del sábado (dayInWeek === 1), inicia a las 5:00 PM
-                        let baseHour = (dayInWeek === 1) ? 5 : 2;
-                        let hourOffset = Math.floor(matchInRoundCount / 4);
-                        let timeHour = baseHour + hourOffset;
-                        let datetimeFormatted = `${dateStr} — ${timeHour}:00 PM`;
-
-                        generatedUpcoming.push({
-                            id: Date.now() + Math.random(),
-                            round: roundNum,
-                            p1Id: p1.id,
-                            p2Id: p2.id,
-                            datetime: datetimeFormatted,
-                            venue: venueName,
-                            table: tableNum
-                        });
-                        matchInRoundCount++;
+                        roundMatches.push({ p1: p1, p2: p2 });
                     }
                 }
+
+                roundMatches.forEach((match, matchIndex) => {
+                    let p1Id = match.p1.id;
+                    let p2Id = match.p2.id;
+                    let key1 = `${p1Id}_${dateStr}`;
+                    let key2 = `${p2Id}_${dateStr}`;
+
+                    let assignedVenue = "";
+
+                    if (playerDayVenue[key1]) {
+                        assignedVenue = playerDayVenue[key1];
+                    } else if (playerDayVenue[key2]) {
+                        assignedVenue = playerDayVenue[key2];
+                    } else {
+                        assignedVenue = (matchIndex % 2 === 0) ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
+                    }
+
+                    playerDayVenue[key1] = assignedVenue;
+                    playerDayVenue[key2] = assignedVenue;
+
+                    let tableNum = (matchIndex % 2) + 1;
+                    let baseHour = (dayInWeek === 1) ? 5 : 2;
+                    let hourOffset = Math.floor(matchIndex / 4);
+                    let timeHour = baseHour + hourOffset;
+                    let datetimeFormatted = `${dateStr} — ${timeHour}:00 PM`;
+
+                    generatedUpcoming.push({
+                        id: Date.now() + Math.random(),
+                        round: roundNum,
+                        p1Id: p1Id,
+                        p2Id: p2Id,
+                        datetime: datetimeFormatted,
+                        venue: assignedVenue,
+                        table: tableNum
+                    });
+                });
+
                 pool.splice(1, 0, pool.pop());
             }
 
             upcomingMatches = generatedUpcoming;
             saveData();
-            alert(`¡Calendario generado con éxito! 19 jornadas distribuidas en 3 jornadas semanales (sábados y domingos).`);
+            alert(`¡Calendario generado con éxito! Se aseguró que los jugadores mantengan la misma sede el mismo día.`);
             renderUpcoming();
         }
 
