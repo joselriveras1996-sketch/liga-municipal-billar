@@ -117,10 +117,13 @@
                         </h2>
                         <p class="text-xs text-slate-400">19 Jornadas de competencia — 4 mesas simultáneas desde las 2:00 PM con intervalos de 1 hora.</p>
                     </div>
-                    <div>
+                    <div class="flex flex-wrap items-center gap-2">
                         <select id="filterRound" onchange="renderUpcoming()" class="bg-slate-900 border border-slate-700 text-amber-400 font-bold px-3 py-2 rounded-lg text-sm">
                             <option value="ALL">Ver todas las jornadas</option>
                         </select>
+                        <button onclick="shareCurrentRound()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-2 rounded-lg text-xs md:text-sm transition flex items-center gap-1.5 shadow">
+                            <i class="fa-brands fa-whatsapp"></i> Copiar Jornada para WhatsApp
+                        </button>
                     </div>
                 </div>
                 <div id="calendarList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -484,6 +487,46 @@
                 renderUpcoming();
                 alert("¡Se han borrado todos los partidos programados con éxito!");
             }
+        }
+
+        // FUNCIÓN PARA COMPARTIR JORNADA POR WHATSAPP
+        function shareCurrentRound() {
+            let filterSelect = document.getElementById('filterRound');
+            let selectedRound = filterSelect ? filterSelect.value : "ALL";
+
+            if (selectedRound === "ALL") {
+                return alert("Por favor, selecciona una jornada específica en el menú desplegable para copiarla.");
+            }
+
+            let list = upcomingMatches.filter(m => m.round == selectedRound);
+            if (list.length === 0) {
+                return alert("No hay partidos programados para esta jornada.");
+            }
+
+            let text = `🎱 *LIGA MUNICIPAL DE BILLAR 3 BANDAS* 🎱\n`;
+            text += `📅 *CALENDARIO - JORNADA ${selectedRound}*\n`;
+            text += `━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+            list.forEach((m, index) => {
+                let p1 = players.find(x => x.id === m.p1Id);
+                let p2 = players.find(x => x.id === m.p2Id);
+                let name1 = p1 ? p1.name : "Por definir";
+                let name2 = p2 ? p2.name : "Por definir";
+
+                text += `🔹 *Partido ${index + 1}* (${m.datetime})\n`;
+                text += `👥 *${name1}* vs *${name2}*\n`;
+                text += `📍 Sede: ${m.venue} (Mesa ${m.table})\n\n`;
+            });
+
+            text += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+            text += `🏆 _¡Mucho éxito a todos los competidores!_`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`¡Jornada ${selectedRound} copiada con éxito!\n\nYa puedes ir al grupo de WhatsApp y presionar "Pegar" para enviarla.`);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+                alert("No se pudo copiar automáticamente. Intenta de nuevo.");
+            });
         }
 
         function switchTab(tab) {
