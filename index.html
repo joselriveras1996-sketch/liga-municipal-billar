@@ -392,7 +392,7 @@
                 return alert("Por favor selecciona la fecha de inicio (Primer Sábado).");
             }
 
-            if (!confirm(`Se van a generar las 19 jornadas (Sábados y Domingos, manteniendo al jugador en la misma sede el mismo día). ¿Deseas continuar?`)) {
+            if (!confirm(`Se van a generar las 19 jornadas (Sábados y Domingos), respetando las sedes fijas de los trabajadores. ¿Deseas continuar?`)) {
                 return;
             }
 
@@ -431,21 +431,38 @@
                 }
 
                 roundMatches.forEach((match, matchIndex) => {
-                    let p1Id = match.p1.id;
-                    let p2Id = match.p2.id;
-                    let key1 = `${p1Id}_${dateStr}`;
-                    let key2 = `${p2Id}_${dateStr}`;
+                    let p1 = match.p1;
+                    let p2 = match.p2;
+                    let key1 = `${p1.id}_${dateStr}`;
+                    let key2 = `${p2.id}_${dateStr}`;
 
                     let assignedVenue = "";
 
-                    if (playerDayVenue[key1]) {
+                    // 1. CONDICIÓN DE SEDE FIJA POR TRABAJO: 
+                    // Si alguno de los dos jugadores tiene una sede específica asignada en su perfil (y no es "Independiente"), 
+                    // el partido se jugará obligatoriamente en su sede.
+                    let fixedVenue = null;
+                    if (p1.venue && p1.venue !== "Independiente") {
+                        fixedVenue = p1.venue;
+                    } else if (p2.venue && p2.venue !== "Independiente") {
+                        fixedVenue = p2.venue;
+                    }
+
+                    if (fixedVenue) {
+                        assignedVenue = fixedVenue;
+                    } 
+                    // 2. Si ya venían jugando en una sede este mismo día, mantenerla
+                    else if (playerDayVenue[key1]) {
                         assignedVenue = playerDayVenue[key1];
                     } else if (playerDayVenue[key2]) {
                         assignedVenue = playerDayVenue[key2];
-                    } else {
+                    } 
+                    // 3. Si no, alternar de forma equitativa
+                    else {
                         assignedVenue = (matchIndex % 2 === 0) ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
                     }
 
+                    // Registrar la sede para ambos en este día
                     playerDayVenue[key1] = assignedVenue;
                     playerDayVenue[key2] = assignedVenue;
 
@@ -458,8 +475,8 @@
                     generatedUpcoming.push({
                         id: Date.now() + Math.random(),
                         round: roundNum,
-                        p1Id: p1Id,
-                        p2Id: p2Id,
+                        p1Id: p1.id,
+                        p2Id: p2.id,
                         datetime: datetimeFormatted,
                         venue: assignedVenue,
                         table: tableNum
@@ -471,7 +488,7 @@
 
             upcomingMatches = generatedUpcoming;
             saveData();
-            alert(`¡Calendario generado con éxito! Se aseguró que los jugadores mantengan la misma sede el mismo día.`);
+            alert(`¡Calendario generado con éxito! Se respetaron las sedes fijas de los trabajadores.`);
             renderUpcoming();
         }
 
