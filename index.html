@@ -172,7 +172,7 @@
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Generador Automático de Torneo (19 Jornadas / 4 Mesas)
                     </h3>
                     <p class="text-xs text-slate-300 mb-4">
-                        Genera automáticamente los partidos de solo ida distribuidos en jornadas de fin de semana (Sábados y Domingos) manteniendo al jugador en la misma sede el mismo día.
+                        Genera automáticamente los partidos (Sábados y Domingos), respetando las sedes fijas de los trabajadores y manteniendo la consistencia diaria.
                     </p>
                     <div class="flex flex-col md:flex-row items-end gap-3 mb-4">
                         <div class="w-full md:w-1/2">
@@ -392,7 +392,7 @@
                 return alert("Por favor selecciona la fecha de inicio (Primer Sábado).");
             }
 
-            if (!confirm(`Se van a generar las 19 jornadas (Sábados y Domingos), respetando las sedes fijas de los trabajadores. ¿Deseas continuar?`)) {
+            if (!confirm(`Se van a generar las 19 jornadas (Sábados y Domingos, manteniendo al jugador en la misma sede el mismo día). ¿Deseas continuar?`)) {
                 return;
             }
 
@@ -438,9 +438,6 @@
 
                     let assignedVenue = "";
 
-                    // 1. CONDICIÓN DE SEDE FIJA POR TRABAJO: 
-                    // Si alguno de los dos jugadores tiene una sede específica asignada en su perfil (y no es "Independiente"), 
-                    // el partido se jugará obligatoriamente en su sede.
                     let fixedVenue = null;
                     if (p1.venue && p1.venue !== "Independiente") {
                         fixedVenue = p1.venue;
@@ -450,19 +447,14 @@
 
                     if (fixedVenue) {
                         assignedVenue = fixedVenue;
-                    } 
-                    // 2. Si ya venían jugando en una sede este mismo día, mantenerla
-                    else if (playerDayVenue[key1]) {
+                    } else if (playerDayVenue[key1]) {
                         assignedVenue = playerDayVenue[key1];
                     } else if (playerDayVenue[key2]) {
                         assignedVenue = playerDayVenue[key2];
-                    } 
-                    // 3. Si no, alternar de forma equitativa
-                    else {
+                    } else {
                         assignedVenue = (matchIndex % 2 === 0) ? "Tasca - Restaurant Billares Wilmaryck" : "Billares Ibarra";
                     }
 
-                    // Registrar la sede para ambos en este día
                     playerDayVenue[key1] = assignedVenue;
                     playerDayVenue[key2] = assignedVenue;
 
@@ -833,13 +825,22 @@
                 let name1 = p1 ? p1.name : "Jugador eliminado";
                 let name2 = p2 ? p2.name : "Jugador eliminado";
 
-                let deleteBtnHtml = isAdminLoggedIn ? `<button onclick="deleteUpcoming(${m.id})" class="text-red-400 hover:text-red-300 font-bold ml-2"><i class="fa-solid fa-trash"></i></button>` : '';
+                let adminActions = isAdminLoggedIn ? `
+                    <div class="flex items-center gap-1">
+                        <button onclick="quickFinishMatch(${m.id})" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2 py-1 rounded text-xs font-bold transition flex items-center gap-1" title="Marcar como jugado">
+                            <i class="fa-solid fa-check"></i> Jugar
+                        </button>
+                        <button onclick="deleteUpcoming(${m.id})" class="text-red-400 hover:text-red-300 p-1 font-bold ml-1" title="Eliminar partido">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                ` : '';
 
                 container.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 flex flex-col justify-between gap-3 shadow">
                         <div class="flex justify-between items-center text-xs text-amber-400 font-semibold border-b border-slate-800 pb-2">
                             <span><i class="fa-solid fa-flag-checkered mr-1"></i> Jornada ${m.round || '1'} — ${m.datetime} (Mesa ${m.table})</span>
-                            ${deleteBtnHtml}
+                            ${adminActions}
                         </div>
                         <div class="flex justify-between items-center font-bold text-white text-sm md:text-base text-center">
                             <span class="w-5/12 text-left">${name1}</span>
@@ -852,6 +853,52 @@
                     </div>
                 `;
             });
+        }
+
+        function quickFinishMatch(matchId) {
+            if (!isAdminLoggedIn) return alert("Debes iniciar sesión como Administrador.");
+            
+            let match = upcomingMatches.find(m => m.id === matchId);
+            if (!match) return;
+
+            let p1 = players.find(x => x.id === match.p1Id);
+            let p2 = players.find(x => x.id === match.p2Id);
+            let name1 = p1 ? p1.name : "Jugador 1";
+            let name2 = p2 ? p2.name : "Jugador 2";
+
+            let car1Input = prompt(`Ingrese las carambolas de ${name1}:`, "0");
+            if (car1Input === null) return;
+            let car1 = parseInt(car1Input) || 0;
+
+            let car2Input = prompt(`Ingrese las carambolas de ${name2}:`, "0");
+            if (car2Input === null) return;
+            let car2 = parseInt(car2Input) || 0;
+
+            let entInput = prompt("Ingrese las entradas totales del partido:", "25");
+            if (entInput === null) return;
+            let ent = parseInt(entInput) || 1;
+
+            let smInput = prompt("Ingrese la serie mayor (opcional):", "0");
+            let sm = parseInt(smInput) || 0;
+
+            matches.push({
+                id: Date.now(),
+                p1Id: match.p1Id,
+                p2Id: match.p2Id,
+                car1: car1,
+                car2: car2,
+                ent: ent,
+                sm1: sm,
+                sm2: 0
+            });
+
+            upcomingMatches = upcomingMatches.filter(m => m.id !== matchId);
+
+            saveData();
+            renderUpcoming();
+            renderTable();
+            renderMatches();
+            alert("¡Partido registrado con éxito y movido al historial!");
         }
 
         function deleteUpcoming(id) {
